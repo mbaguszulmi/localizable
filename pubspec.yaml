@@ -1,6 +1,6 @@
 name: localizable
 description: Automatically generate Localization helpers with only annotating class with @Localizable.
-version: 0.0.2
+version: 0.0.3
 repository: https://github.com/mbaguszulmi/localizable.git
 homepage: https://github.com/mbaguszulmi/localizable
 
