@@ -1,6 +1,5 @@
 name: localizable
 description: Automatically generate Localization helpers with only annotating class with @Localizable.
-publish_to: 'none'
 version: 0.0.2
 
 environment:
