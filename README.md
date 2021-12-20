@@ -1,16 +1,89 @@
 # localizable
 
-A new Flutter project.
+Automatically generate Localization helpers with only annotating class with `@Localizable`.
 
-## Getting Started
+## How to Install
 
-This project is a starting point for a Flutter application.
+<!-- Add [localizable_annotation](https://pub.dev/packages/localizable_annotation) to `dependencies`, 
+`localizable` and `build_runner` to `dev_dependencies` -->
 
-A few resources to get you started if this is your first Flutter project:
+Add `dependencies` and `dev_dependencies` to your `pubspec.yaml`
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```
+dependencies:
+  flutter_localizations: # Add this line
+    sdk: flutter # Add this line
+  intl: any # Add this line
+  localizable_annotation: ^0.0.3 # Add this line
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+dev_dependencies:
+  localizable: ^0.0.2 # Add this line
+  build_runner: any # Add this line
+```
+
+Packages reference:
+
+- [flutter_localizations](https://pub.dev/packages/flutter_localizations)
+- [intl](https://pub.dev/packages/intl)
+- [localizable_annotation](https://pub.dev/packages/localizable_annotation)
+- [build_runner](https://pub.dev/packages/build_runner)
+
+## Usage
+
+Create a file (eg. `app_localization.dart`) containing `translations` class with `@Localizable` 
+annotation to accommodate your localizations 
+String as shown on [this example](https://pub.dev/packages/localizable_annotation/example).
+
+```
+import 'package:localizable_annotation/localizable_annotation.dart';
+
+@Localizable(
+  className: "AppLocalization",
+)
+class AppTranslations {
+  static const Map<String, Map<String, String>> translations = {
+    'en': {
+      'title': 'Flutter Demo',
+      'description': 'A Flutter Demo',
+      'greetings': 'Hello {name}!',
+    },
+    'id': {
+      'title': 'Demo Flutter',
+      'description': 'Sebuah Demo Flutter',
+      'greetings': 'Halo {name}!',
+    },
+  };
+
+  static const String defaultLocale = 'en';
+}
+```
+
+Then, at the same file add `part` directive above the `@Localizable` statement.
+(Eg. `part 'app_localization.g.dart';`)
+
+And then, to generate localizations class, run this on your command line 
+(make sure working directory is your project directory).
+
+```
+flutter pub run build_runner build
+```
+
+Or if you want to automatically generate when files is changed, you can run this command.
+
+```
+flutter pub run build_runner build
+```
+
+Last, add this import block at the top of the file where your `translations` 
+class (annotated with `@Localizable`) defined.
+
+```
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
+```
+
+For more details, visit [this example](https://pub.dev/packages/localizable/example).
