@@ -1,15 +1,14 @@
 name: localizable
 description: Automatically generate Localization helpers with only annotating class with @Localizable.
 publish_to: 'none'
-version: 0.0.2+1
+version: 0.0.2
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   build: ^2.2.0
-  localizable_annotation:
-    path: ../localizable_annotation
+  localizable_annotation: ^0.0.3
   source_gen: ^1.2.1
 
 dev_dependencies:
